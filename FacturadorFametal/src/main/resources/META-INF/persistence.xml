@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
+  <persistence-unit name="entidad" transaction-type="RESOURCE_LOCAL">
+    <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+    <class>com.fametal.modelo.Producto</class>
+    <class>com.fametal.modelo.TipoProducto</class>
+    <class>com.fametal.modelo.tipoProductoLongitud</class>
+    <class>com.fametal.modelo.Cuadrado</class>
+    <class>com.fametal.modelo.Cuenta</class>
+    <class>com.fametal.modelo.ClienteRuc</class>
+    <class>com.fametal.modelo.Redondo</class>
+    <properties>
+      <property name="javax.persistence.jdbc.url" value="jdbc:mysql://aws.connect.psdb.cloud/megafirst"/>
+      <property name="javax.persistence.jdbc.user" value="qq3qzdhw0ots1tzq4mm0"/>
+      <property name="javax.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver"/>
+      <property name="javax.persistence.jdbc.password" value="pscale_pw_OgcDH3do0dZropWX8jGYwZaR7U4Sr7GoJL2mueTtxFh"/>
+      <property name="javax.persistence.schema-generation.database.action" value="create"/>
+    </properties>
+  </persistence-unit>
+</persistence>
