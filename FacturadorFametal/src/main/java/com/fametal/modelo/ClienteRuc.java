@@ -22,6 +22,7 @@ public class ClienteRuc implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+    private final String tipoDocumento = "6"; 
     private String ruc;
     private String razonSocial;
     private String direccion;
@@ -33,7 +34,8 @@ public class ClienteRuc implements Serializable {
     private String telefono1;
     private String telefono2;
     private String celular;
-
+    
+    private String ubigeo;
     public ClienteRuc() {
     }
     
@@ -47,8 +49,9 @@ public class ClienteRuc implements Serializable {
      * @param departamento
      * @param provincia
      * @param distrito 
+     * @param ubigeo 
      */
-    public ClienteRuc(String ruc, String razonSocial, String direccion, String estado, String departamento, String provincia, String distrito) {
+    public ClienteRuc(String ruc, String razonSocial, String direccion, String estado, String departamento, String provincia, String distrito,String ubigeo) {
         this.ruc = ruc;
         this.razonSocial = razonSocial;
         this.direccion = direccion;
@@ -56,6 +59,7 @@ public class ClienteRuc implements Serializable {
         this.departamento = departamento;
         this.provincia = provincia;
         this.distrito = distrito;
+        this.ubigeo = ubigeo;
     }
     
     /**
@@ -70,8 +74,9 @@ public class ClienteRuc implements Serializable {
      * @param provincia
      * @param distrito
      * @param telefono1 
+     * @param ubigeo 
      */
-    public ClienteRuc(String ruc, String razonSocial, String direccion, String estado, String departamento, String provincia, String distrito, String telefono1) {
+    public ClienteRuc(String ruc, String razonSocial, String direccion, String estado, String departamento, String provincia, String distrito, String telefono1,String ubigeo) {
         this.ruc = ruc;
         this.razonSocial = razonSocial;
         this.direccion = direccion;
@@ -80,6 +85,7 @@ public class ClienteRuc implements Serializable {
         this.provincia = provincia;
         this.distrito = distrito;
         this.telefono1 = telefono1;
+        this.ubigeo = ubigeo;
     }
     
     /**
@@ -93,8 +99,9 @@ public class ClienteRuc implements Serializable {
      * @param distrito
      * @param telefono1
      * @param telefono2 
+     * @param ubigeo 
      */
-    public ClienteRuc(String ruc, String razonSocial, String direccion, String estado, String departamento, String provincia, String distrito, String telefono1, String telefono2) {
+    public ClienteRuc(String ruc, String razonSocial, String direccion, String estado, String departamento, String provincia, String distrito, String telefono1, String telefono2,String ubigeo) {
         this.ruc = ruc;
         this.razonSocial = razonSocial;
         this.direccion = direccion;
@@ -119,8 +126,9 @@ public class ClienteRuc implements Serializable {
      * @param telefono1
      * @param telefono2
      * @param celular 
+     * @param ubigeo 
      */
-    public ClienteRuc(String ruc, String razonSocial, String direccion, String estado, String departamento, String provincia, String distrito, String telefono1, String telefono2, String celular) {
+    public ClienteRuc(String ruc, String razonSocial, String direccion, String estado, String departamento, String provincia, String distrito, String telefono1, String telefono2, String celular,String ubigeo ) {
         this.ruc = ruc;
         this.razonSocial = razonSocial;
         this.direccion = direccion;
@@ -131,6 +139,7 @@ public class ClienteRuc implements Serializable {
         this.telefono1 = telefono1;
         this.telefono2 = telefono2;
         this.celular = celular;
+        this.ubigeo = ubigeo;
     }
     
     

@@ -3,8 +3,6 @@ package com.fametal.modelo.Apis;
 
 import com.fametal.modelo.ClienteRuc;
 import com.google.gson.Gson;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonObject;
 import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
@@ -46,9 +44,10 @@ public class artefactosAPI {
             String departamento = datosRuc.get("departamento").toString();
             String provincia = datosRuc.get("provincia").toString();
             String distrito = datosRuc.get("distrito").toString();
+            String ubiego = datosRuc.get("ubigeo").toString();
             var telefono = datosRuc.get("telefonos");
-            System.out.println(telefono.getClass());
-            return new ClienteRuc(ruc, razonSocial,direccion,estado,departamento, provincia, distrito);
+
+            return new ClienteRuc(ruc, razonSocial,direccion,estado,departamento, provincia, distrito,ubiego);
         }
     }
 }

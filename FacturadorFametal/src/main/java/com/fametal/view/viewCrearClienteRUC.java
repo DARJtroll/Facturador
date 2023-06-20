@@ -17,7 +17,7 @@ import javax.swing.JOptionPane;
  */
 public class viewCrearClienteRUC extends javax.swing.JFrame {
     private EntityManager em;
-    private ClienteRuc cliente;
+    private ClienteRuc cliente = null;
     private viewCrearFactura vPadre;
     public viewCrearClienteRUC(EntityManager em,viewCrearFactura padre) {
         initComponents();
@@ -231,20 +231,28 @@ public class viewCrearClienteRUC extends javax.swing.JFrame {
     }//GEN-LAST:event_btBuscarRUCActionPerformed
 
     private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
+        vPadre.setEnabled(true);
         vPadre.setVisible(true);
     }//GEN-LAST:event_formWindowClosed
 
     private void btGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btGuardarActionPerformed
-        cliente.setTelefono1(txtTelefono1.getText());
-        cliente.setTelefono2(txtTelefono2.getText());
-        cliente.setCelular(txtCelular.getText());
-        DaoMaestro dao = new DaoMaestro();
+        if(cliente != null){
+            cliente.setTelefono1(txtTelefono1.getText());
+            cliente.setTelefono2(txtTelefono2.getText());
+            cliente.setCelular(txtCelular.getText());
+            DaoMaestro dao = new DaoMaestro();
+
+            dao.GuardarEntidad(cliente,em);
+
+            this.setVisible(false);
+
+            this.setEnabled(false);
+            vPadre.setVisible(true);
+            vPadre.setEnabled(true);
+        }else{
+            JOptionPane.showMessageDialog(this,"No hay ninguna empresa para agregar","Error 003",JOptionPane.ERROR_MESSAGE);
+        }
         
-        dao.GuardarEntidad(cliente,em);
-        
-        this.setVisible(false);
-        vPadre.setVisible(true);
-        this.setEnabled(false);
     }//GEN-LAST:event_btGuardarActionPerformed
 
 

@@ -1,7 +1,10 @@
 
 package com.fametal.view;
 
+import com.fametal.modelo.ClienteRuc;
 import javax.persistence.EntityManager;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableColumn;
 
 /**
  *
@@ -11,6 +14,13 @@ public class viewCrearFactura extends javax.swing.JFrame {
 
     private EntityManager em;
     private viewMenuPrincipal padre;
+    private ClienteRuc cliente;
+    private DefaultTableModel modeloTabla = new DefaultTableModel(){
+        @Override
+        public boolean isCellEditable(int row, int column) {
+            return false;
+        } 
+    };
     /**
      * Creates new form viewCrearFactura
      * @param EM el Entiy Manager
@@ -19,8 +29,22 @@ public class viewCrearFactura extends javax.swing.JFrame {
         initComponents();
         this.em = EM;
         this.padre = padre;
+        modeloTabla = (DefaultTableModel) tbItems.getModel();
+        modeloTabla.addRow(new String[4]);
+        //TableColumn[] colum = {tbItems.getColumn(0)};
+        tbItems.getColumnModel().getColumn(0).setPreferredWidth(50);
+        tbItems.getColumnModel().getColumn(1).setPreferredWidth(500);
+        tbItems.getColumnModel().getColumn(2).setPreferredWidth(190);
+        tbItems.getColumnModel().getColumn(3).setPreferredWidth(190);
+        
     }
-
+    
+    public void RecibirCliente(ClienteRuc cliente){
+        this.cliente = cliente;
+        txtRuc.setText(this.cliente.getRuc());
+        txtDireccion.setText(this.cliente.getDireccion());
+        txtRazonSocial.setText(this.cliente.getRazonSocial());
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -34,9 +58,14 @@ public class viewCrearFactura extends javax.swing.JFrame {
         txtRuc = new javax.swing.JTextField();
         btBuscarCliente = new javax.swing.JButton();
         btAgregarCliente = new javax.swing.JButton();
+        txtRazonSocial = new javax.swing.JTextField();
+        txtDireccion = new javax.swing.JTextField();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tbItems = new javax.swing.JTable();
+        jButton1 = new javax.swing.JButton();
         menuBar = new javax.swing.JMenuBar();
         menuArchivo = new javax.swing.JMenu();
-        menuItemNuevaFactura = new javax.swing.JMenuItem();
+        menuItemAñadirCliente = new javax.swing.JMenuItem();
         menuAyuda = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -74,40 +103,113 @@ public class viewCrearFactura extends javax.swing.JFrame {
             }
         });
 
+        txtRazonSocial.setFont(new java.awt.Font("Franklin Gothic Book", 0, 20)); // NOI18N
+        txtRazonSocial.setText("Razon Social");
+        txtRazonSocial.setToolTipText("Razon Social");
+        txtRazonSocial.setEnabled(false);
+        txtRazonSocial.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtRazonSocialActionPerformed(evt);
+            }
+        });
+
+        txtDireccion.setFont(new java.awt.Font("Franklin Gothic Book", 0, 20)); // NOI18N
+        txtDireccion.setText("Direccion");
+        txtDireccion.setToolTipText("Direccion");
+        txtDireccion.setEnabled(false);
+        txtDireccion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtDireccionActionPerformed(evt);
+            }
+        });
+
+        tbItems.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Cantidad", "Destripción", "Valor Unitario", "Valor Total"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane1.setViewportView(tbItems);
+        if (tbItems.getColumnModel().getColumnCount() > 0) {
+            tbItems.getColumnModel().getColumn(0).setResizable(false);
+            tbItems.getColumnModel().getColumn(1).setResizable(false);
+            tbItems.getColumnModel().getColumn(2).setResizable(false);
+            tbItems.getColumnModel().getColumn(3).setResizable(false);
+        }
+
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMGs/agregar Producto.png"))); // NOI18N
+        jButton1.setText("Agregar Producto");
+        jButton1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButton1.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+
         javax.swing.GroupLayout panelPrincipalLayout = new javax.swing.GroupLayout(panelPrincipal);
         panelPrincipal.setLayout(panelPrincipalLayout);
         panelPrincipalLayout.setHorizontalGroup(
             panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelPrincipalLayout.createSequentialGroup()
                 .addGap(40, 40, 40)
-                .addComponent(txtRuc, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(btBuscarCliente)
-                .addGap(18, 18, 18)
-                .addComponent(btAgregarCliente)
-                .addContainerGap(678, Short.MAX_VALUE))
+                .addGroup(panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 920, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(panelPrincipalLayout.createSequentialGroup()
+                        .addGroup(panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(panelPrincipalLayout.createSequentialGroup()
+                                .addComponent(txtRuc, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(btBuscarCliente)
+                                .addGap(18, 18, 18)
+                                .addComponent(btAgregarCliente)
+                                .addGap(18, 18, 18)
+                                .addComponent(txtRazonSocial, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txtDireccion))
+                        .addGap(18, 18, 18)
+                        .addComponent(jButton1)))
+                .addContainerGap(28, Short.MAX_VALUE))
         );
         panelPrincipalLayout.setVerticalGroup(
             panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelPrincipalLayout.createSequentialGroup()
                 .addGap(40, 40, 40)
-                .addGroup(panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btAgregarCliente)
-                    .addGroup(panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(txtRuc, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(btBuscarCliente)))
-                .addContainerGap(598, Short.MAX_VALUE))
+                .addGroup(panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(panelPrincipalLayout.createSequentialGroup()
+                        .addGroup(panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtRazonSocial, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btAgregarCliente)
+                            .addComponent(btBuscarCliente)
+                            .addComponent(txtRuc, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(38, 38, 38)
+                        .addComponent(txtDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(29, 29, 29)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 390, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(102, Short.MAX_VALUE))
         );
 
         menuArchivo.setText("Archivo");
 
-        menuItemNuevaFactura.setText("Nueva Factura");
-        menuItemNuevaFactura.addActionListener(new java.awt.event.ActionListener() {
+        menuItemAñadirCliente.setText("Añadir Cliente");
+        menuItemAñadirCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                menuItemNuevaFacturaActionPerformed(evt);
+                menuItemAñadirClienteActionPerformed(evt);
             }
         });
-        menuArchivo.add(menuItemNuevaFactura);
+        menuArchivo.add(menuItemAñadirCliente);
 
         menuBar.add(menuArchivo);
 
@@ -120,32 +222,32 @@ public class viewCrearFactura extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1000, Short.MAX_VALUE)
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(panelPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(panelPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 677, Short.MAX_VALUE)
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(panelPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(panelPrincipal, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void menuItemNuevaFacturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemNuevaFacturaActionPerformed
-        viewCrearFactura fact = new viewCrearFactura(em,padre);
-        fact.setVisible(true);
-    }//GEN-LAST:event_menuItemNuevaFacturaActionPerformed
+    private void menuItemAñadirClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemAñadirClienteActionPerformed
+
+    }//GEN-LAST:event_menuItemAñadirClienteActionPerformed
 
     private void txtRucActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtRucActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtRucActionPerformed
 
     private void btBuscarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btBuscarClienteActionPerformed
-        
+        viewEncontrarClienteRUC vEC = new viewEncontrarClienteRUC(em,this);
+        vEC.setVisible(true);
+        this.setEnabled(false);
     }//GEN-LAST:event_btBuscarClienteActionPerformed
 
     private void btAgregarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAgregarClienteActionPerformed
@@ -158,15 +260,28 @@ public class viewCrearFactura extends javax.swing.JFrame {
         padre.setVisible(true);
     }//GEN-LAST:event_formWindowClosed
 
+    private void txtRazonSocialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtRazonSocialActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtRazonSocialActionPerformed
+
+    private void txtDireccionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDireccionActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtDireccionActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btAgregarCliente;
     private javax.swing.JButton btBuscarCliente;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JMenu menuArchivo;
     private javax.swing.JMenu menuAyuda;
     private javax.swing.JMenuBar menuBar;
-    private javax.swing.JMenuItem menuItemNuevaFactura;
+    private javax.swing.JMenuItem menuItemAñadirCliente;
     private javax.swing.JPanel panelPrincipal;
+    private javax.swing.JTable tbItems;
+    private javax.swing.JTextField txtDireccion;
+    private javax.swing.JTextField txtRazonSocial;
     private javax.swing.JTextField txtRuc;
     // End of variables declaration//GEN-END:variables
 }

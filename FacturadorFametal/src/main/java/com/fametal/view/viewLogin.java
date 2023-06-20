@@ -39,7 +39,6 @@ public class viewLogin extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Login Sistema");
         setBackground(new java.awt.Color(0, 0, 0));
-        setPreferredSize(new java.awt.Dimension(800, 600));
         setResizable(false);
         setSize(new java.awt.Dimension(800, 600));
 
@@ -51,6 +50,7 @@ public class viewLogin extends javax.swing.JFrame {
 
         txtUsuario.setBackground(new java.awt.Color(204, 255, 204));
         txtUsuario.setFont(new java.awt.Font("Franklin Gothic Book", 0, 24)); // NOI18N
+        txtUsuario.setText("admin");
         txtUsuario.setToolTipText("usuario");
         txtUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -60,6 +60,7 @@ public class viewLogin extends javax.swing.JFrame {
 
         txtContrasena.setBackground(new java.awt.Color(204, 255, 204));
         txtContrasena.setFont(new java.awt.Font("Franklin Gothic Book", 0, 24)); // NOI18N
+        txtContrasena.setText("1234");
         txtContrasena.setToolTipText("Contraseña");
 
         lbUsuraio.setFont(new java.awt.Font("Nirmala UI", 1, 18)); // NOI18N
