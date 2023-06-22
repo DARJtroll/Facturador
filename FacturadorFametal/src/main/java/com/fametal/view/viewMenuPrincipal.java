@@ -150,7 +150,7 @@ public class viewMenuPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_btCrearFacturaActionPerformed
 
     private void btAdminsitrarInventarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAdminsitrarInventarioActionPerformed
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_btAdminsitrarInventarioActionPerformed
 
     private void menuItemNuevaFacturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemNuevaFacturaActionPerformed

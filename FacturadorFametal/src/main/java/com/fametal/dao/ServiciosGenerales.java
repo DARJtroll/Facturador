@@ -39,4 +39,12 @@ public class ServiciosGenerales {
     public List<Producto> listarProductos(){
         return productosDao.listarTodo();
     }
+    
+    public void GuardarEntidad(Object objeto,EntityManager em){
+        em.getTransaction().begin();
+        em.persist(objeto);
+        em.getTransaction().commit();
+        em.close();
+    }
+    
 }

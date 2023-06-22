@@ -20,4 +20,6 @@ class ProductosDao {
         return em.createQuery(SQL,Producto.class).getResultList();
     }
     
+    
+    
 }
