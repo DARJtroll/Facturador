@@ -2,6 +2,7 @@
 package com.fametal.view;
 
 import com.fametal.modelo.ClienteRuc;
+import com.fametal.modelo.Factura;
 import javax.persistence.EntityManager;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
@@ -21,6 +22,7 @@ public class viewCrearFactura extends javax.swing.JFrame {
             return false;
         } 
     };
+    private final Factura factura = new Factura();
     /**
      * Creates new form viewCrearFactura
      * @param EM el Entiy Manager
@@ -32,10 +34,12 @@ public class viewCrearFactura extends javax.swing.JFrame {
         modeloTabla = (DefaultTableModel) tbItems.getModel();
         modeloTabla.addRow(new String[4]);
         //TableColumn[] colum = {tbItems.getColumn(0)};
+        //Aqui se definen los tamañanos de las columnas
         tbItems.getColumnModel().getColumn(0).setPreferredWidth(50);
         tbItems.getColumnModel().getColumn(1).setPreferredWidth(500);
         tbItems.getColumnModel().getColumn(2).setPreferredWidth(190);
         tbItems.getColumnModel().getColumn(3).setPreferredWidth(190);
+        //tbItems.getColumnModel().getColumn(3).;
         
     }
     
@@ -44,6 +48,7 @@ public class viewCrearFactura extends javax.swing.JFrame {
         txtRuc.setText(this.cliente.getRuc());
         txtDireccion.setText(this.cliente.getDireccion());
         txtRazonSocial.setText(this.cliente.getRazonSocial());
+        factura.recibirClienteRuc(this.cliente);
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -158,6 +163,11 @@ public class viewCrearFactura extends javax.swing.JFrame {
         jButton1.setText("Agregar Producto");
         jButton1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jButton1.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout panelPrincipalLayout = new javax.swing.GroupLayout(panelPrincipal);
         panelPrincipal.setLayout(panelPrincipalLayout);
@@ -178,7 +188,7 @@ public class viewCrearFactura extends javax.swing.JFrame {
                                 .addGap(18, 18, 18)
                                 .addComponent(txtRazonSocial, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(txtDireccion))
-                        .addGap(18, 18, 18)
+                        .addGap(55, 55, 55)
                         .addComponent(jButton1)))
                 .addContainerGap(28, Short.MAX_VALUE))
         );
@@ -267,6 +277,11 @@ public class viewCrearFactura extends javax.swing.JFrame {
     private void txtDireccionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDireccionActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtDireccionActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        viewAgregarProducto vAgregarProducto = new viewAgregarProducto(em);
+        vAgregarProducto.setVisible(true);
+    }//GEN-LAST:event_jButton1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

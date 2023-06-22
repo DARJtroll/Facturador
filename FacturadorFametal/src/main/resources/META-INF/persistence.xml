@@ -3,12 +3,12 @@
   <persistence-unit name="entidad" transaction-type="RESOURCE_LOCAL">
     <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
     <class>com.fametal.modelo.Producto</class>
-    <class>com.fametal.modelo.TipoProducto</class>
-    <class>com.fametal.modelo.tipoProductoLongitud</class>
-    <class>com.fametal.modelo.Cuadrado</class>
     <class>com.fametal.modelo.Cuenta</class>
     <class>com.fametal.modelo.ClienteRuc</class>
-    <class>com.fametal.modelo.Redondo</class>
+    <class>com.fametal.modelo.productos.Cuadrado</class>
+    <class>com.fametal.modelo.productos.Redondo</class>
+    <class>com.fametal.modelo.productos.TipoProducto</class>
+    <class>com.fametal.modelo.productos.tipoProductoLongitud</class>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:mysql://aws.connect.psdb.cloud/megafirst"/>
       <property name="javax.persistence.jdbc.user" value="qq3qzdhw0ots1tzq4mm0"/>

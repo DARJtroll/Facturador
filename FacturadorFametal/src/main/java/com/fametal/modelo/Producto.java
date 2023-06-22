@@ -5,6 +5,7 @@
 package com.fametal.modelo;
 
 
+import com.fametal.modelo.productos.TipoProducto;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -32,6 +33,7 @@ public class Producto {
     private double cantidad;
     
     @ManyToOne(cascade = javax.persistence.CascadeType.PERSIST)
+
     private TipoProducto tipoProducto;
     
     public Long getId() {

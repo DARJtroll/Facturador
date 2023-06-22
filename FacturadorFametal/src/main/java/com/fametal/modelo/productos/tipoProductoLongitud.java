@@ -1,8 +1,7 @@
 
-package com.fametal.modelo;
+package com.fametal.modelo.productos;
 
-import com.mysql.cj.xdevapi.XDevAPIError;
-import javax.persistence.Embeddable;
+import com.fametal.modelo.TipoMaterial;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;

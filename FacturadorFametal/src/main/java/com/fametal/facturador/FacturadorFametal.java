@@ -3,8 +3,14 @@
 package com.fametal.facturador;
 
 
-import com.fametal.modelo.Producto;
+import com.fametal.modelo.Apis.LocalDateTimeAdapter;
+import com.fametal.modelo.ClienteRuc;
+import com.fametal.modelo.Factura;
 import com.fametal.view.viewLogin;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonElement;
+import java.time.LocalDateTime;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
@@ -23,7 +29,12 @@ public class FacturadorFametal {
         viewLogin log = new viewLogin(em);
         log.setVisible(true);
         
+        Factura fac = new Factura();
         
+        Gson gg = new GsonBuilder().registerTypeAdapter(LocalDateTime.class, new LocalDateTimeAdapter()).setPrettyPrinting().create();
+        String json = gg.toJson(fac);
+        
+        System.out.println(json);
         //tipoProductoLongitud cuadrado = new Cuadrado("1.2","0.9",TipoMaterial.Galvanizado);
         //Producto producto = new Producto(10, 10, 10, cuadrado);
         
@@ -35,10 +46,7 @@ public class FacturadorFametal {
         em.getTransaction().commit();*/
         
         //em.close();   //Solo cerrar cuando sea necesario XD
-        
-        Producto p = em.find(Producto.class,1L);
-        //System.out.println("");
-        System.out.println(p.getPrecioCompra());
+
 
     }
 }

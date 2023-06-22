@@ -1,5 +1,6 @@
-package com.fametal.modelo;
+package com.fametal.modelo.productos;
 
+import com.fametal.modelo.TipoMaterial;
 import javax.persistence.Entity;
 
 

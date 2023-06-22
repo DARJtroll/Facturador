@@ -1,5 +1,6 @@
-package com.fametal.modelo;
+package com.fametal.modelo.productos;
 
+import com.fametal.modelo.TipoMaterial;
 import javax.persistence.Entity;
 
 
@@ -34,7 +35,9 @@ public class Cuadrado extends tipoProductoLongitud{
     
     @Override
     public String getDescripcion() {
-        return "Cuadrado";
+        StringBuilder str = new StringBuilder();
+        str.append("Tubo ").append(this.tipoMaterial).append(" Cuadrado de ").append(this.medida).append(" por ").append(this.grosor).append("'").append(" de").append(this.longitud).append(" metros");
+        return str.toString();
     }
     
 }

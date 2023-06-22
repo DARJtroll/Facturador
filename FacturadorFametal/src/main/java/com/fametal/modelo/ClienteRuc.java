@@ -203,6 +203,9 @@ public class ClienteRuc implements Serializable {
         this.celular = celular;
     }
     
+    public String getUbigueo(){
+        return this.ubigeo;
+    }
 
     
     @Override
