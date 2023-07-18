@@ -55,6 +55,16 @@ public class Producto {
         this.descripcion = tipoProducto.getDescripcion();
     }
 
+    public Producto(String descripcion, double precioCompra, double precioVenta, double cantidad, TipoProducto tipoProducto) {
+        this.descripcion = descripcion;
+        this.precioCompra = precioCompra;
+        this.precioVenta = precioVenta;
+        this.cantidad = cantidad;
+        this.tipoProducto = tipoProducto;
+    }
+    
+    
+
     public String getDescripcion() {
         return descripcion;
     }

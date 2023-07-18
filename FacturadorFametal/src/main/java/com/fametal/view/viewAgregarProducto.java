@@ -70,9 +70,9 @@ public class viewAgregarProducto extends javax.swing.JFrame {
             tbProductos.getColumnModel().getColumn(0).setResizable(false);
             tbProductos.getColumnModel().getColumn(0).setPreferredWidth(80);
             tbProductos.getColumnModel().getColumn(1).setResizable(false);
-            tbProductos.getColumnModel().getColumn(1).setPreferredWidth(500);
+            tbProductos.getColumnModel().getColumn(1).setPreferredWidth(450);
             tbProductos.getColumnModel().getColumn(2).setResizable(false);
-            tbProductos.getColumnModel().getColumn(2).setPreferredWidth(85);
+            tbProductos.getColumnModel().getColumn(2).setPreferredWidth(135);
             tbProductos.getColumnModel().getColumn(3).setResizable(false);
             tbProductos.getColumnModel().getColumn(3).setPreferredWidth(85);
         }

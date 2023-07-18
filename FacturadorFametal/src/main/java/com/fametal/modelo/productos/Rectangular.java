@@ -21,11 +21,13 @@ public class Rectangular extends tipoProductoLongitud{
         super(grosor, longitud, tipoMaterial);
         this.altura = altura;
         this.anchura = anchura;
+        setearTipo();
     }
     
     /**
      * Este constructor se usa para no definir la longitud del tubo
-     * @param medida Es la medido del tubo cudrado, lo que mide un lado
+     * @param altura
+     * @param anchura
      * @param grosor El grosordel Tubo
      * @param tipoMaterial 
      */
@@ -33,14 +35,18 @@ public class Rectangular extends tipoProductoLongitud{
         super(grosor,6.00, tipoMaterial);
         this.altura = altura;
         this.anchura = anchura;
+        setearTipo();
     }
 
     
     @Override
     public String getDescripcion() {
         StringBuilder str = new StringBuilder();
-        str.append("Tubo ").append(this.tipoMaterial).append(" Rectangular de ").append(this.altura).append(" por ").append(this.anchura).append(" por ").append(this.grosor).append("'").append(" de").append(this.longitud).append(" metros");
+        str.append("Tubo ").append(this.tipoMaterial).append(" Rectangular de ").append(this.altura).append(" por ").append(this.anchura).append(" por ").append(this.grosor).append(" de").append(this.longitud).append(" metros");
         return str.toString();
     }
     
+    public final void setearTipo(){
+        setTipo("Tubo Rectangular " + tipoMaterial);
+    }
 }

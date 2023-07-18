@@ -87,12 +87,12 @@
                       <Editor/>
                       <Renderer/>
                     </Column>
-                    <Column maxWidth="-1" minWidth="-1" prefWidth="500" resizable="false">
+                    <Column maxWidth="-1" minWidth="-1" prefWidth="450" resizable="false">
                       <Title/>
                       <Editor/>
                       <Renderer/>
                     </Column>
-                    <Column maxWidth="-1" minWidth="-1" prefWidth="85" resizable="false">
+                    <Column maxWidth="-1" minWidth="-1" prefWidth="135" resizable="false">
                       <Title/>
                       <Editor/>
                       <Renderer/>

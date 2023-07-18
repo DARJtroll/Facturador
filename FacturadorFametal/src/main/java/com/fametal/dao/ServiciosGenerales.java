@@ -40,11 +40,15 @@ public class ServiciosGenerales {
         return productosDao.listarTodo();
     }
     
+    public List<Producto> listarPorDescripcioProductos(String descrip){
+        return productosDao.listarPorDescripcion(descrip);
+    }
+    
     public void GuardarEntidad(Object objeto,EntityManager em){
         em.getTransaction().begin();
         em.persist(objeto);
         em.getTransaction().commit();
-        em.close();
+        //em.close();
     }
     
 }

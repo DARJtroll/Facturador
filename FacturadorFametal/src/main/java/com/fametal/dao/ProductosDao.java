@@ -19,6 +19,11 @@ class ProductosDao {
         String SQL = "SELECT P FROM Producto as P";
         return em.createQuery(SQL,Producto.class).getResultList();
     }
+
+    List<Producto> listarPorDescripcion(String descrip) {
+        String SQL = "SELECT P FROM Producto as P WHERE P.descripcion LIKE :descrip";
+        return em.createQuery(SQL,Producto.class).setParameter("descrip",descrip +"%").getResultList();
+    }
     
     
     

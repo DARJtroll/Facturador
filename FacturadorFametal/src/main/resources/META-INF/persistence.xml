@@ -9,6 +9,8 @@
     <class>com.fametal.modelo.productos.Redondo</class>
     <class>com.fametal.modelo.productos.TipoProducto</class>
     <class>com.fametal.modelo.productos.tipoProductoLongitud</class>
+    <class>com.fametal.modelo.productos.Perfiles</class>
+    <class>com.fametal.modelo.productos.Rectangular</class>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:mysql://aws.connect.psdb.cloud/megafirst"/>
       <property name="javax.persistence.jdbc.user" value="qq3qzdhw0ots1tzq4mm0"/>
