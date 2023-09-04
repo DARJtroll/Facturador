@@ -5,7 +5,7 @@ package com.fametal.modelo;
  *
  * @author Arian
  */
-class Detalles {
+class DetallesDeProducto {
     /*
     "unidad": "NIU",
     "descripcion": "PRODUCTO 1",
@@ -29,7 +29,7 @@ class Detalles {
     private float totalImpuestos;
     private float mtoPrecioUnitario;
 
-    public Detalles(Item produc){
+    public DetallesDeProducto(Item produc){
         
     }
     

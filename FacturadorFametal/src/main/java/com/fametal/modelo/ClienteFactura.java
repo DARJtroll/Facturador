@@ -5,7 +5,7 @@ package com.fametal.modelo;
  *
  * @author Arian
  */
-class ClienteFactura {
+public class ClienteFactura {
     private final String tipoDoc = "6";
     private String numDoc;
     private String rznSocial;

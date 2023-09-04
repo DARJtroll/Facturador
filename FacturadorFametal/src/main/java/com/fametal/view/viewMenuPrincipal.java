@@ -4,6 +4,10 @@
  */
 package com.fametal.view;
 
+import com.fametal.dao.ServiciosGenerales;
+import com.fametal.modelo.Producto;
+import java.util.ArrayList;
+import java.util.List;
 import javax.persistence.EntityManager;
 
 /**
@@ -13,6 +17,7 @@ import javax.persistence.EntityManager;
 public class viewMenuPrincipal extends javax.swing.JFrame {
     private EntityManager em;
     private viewLogin loginfather;
+    public static List<Producto> listaDeProductos;
     /**
      * Creates new form viewMenuPrincipal
      */
@@ -20,6 +25,7 @@ public class viewMenuPrincipal extends javax.swing.JFrame {
         initComponents();
         this.em = EM;
         this.loginfather = Login;
+        obtenerInventario();
     }
 
 
@@ -172,4 +178,9 @@ public class viewMenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem menuItemNuevaFactura;
     private javax.swing.JPanel panelPrincipal;
     // End of variables declaration//GEN-END:variables
+
+    private void obtenerInventario() {
+        ServiciosGenerales servis = new ServiciosGenerales(em);
+        listaDeProductos = servis.listarProductos();
+    }
 }

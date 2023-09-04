@@ -17,12 +17,12 @@ import javax.swing.table.TableModel;
  *
  * @author Arian
  */
-public class viewAgregarProducto extends javax.swing.JFrame {
+public class viewInventario extends javax.swing.JFrame {
     private EntityManager em;
     /**
      * Creates new form viewAgregarProducto
      */
-    public viewAgregarProducto(EntityManager EM) {
+    public viewInventario(EntityManager EM) {
         initComponents();
         em = EM; 
         ActualizarTabla();

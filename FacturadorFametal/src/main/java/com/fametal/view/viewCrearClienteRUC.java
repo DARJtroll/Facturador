@@ -1,7 +1,8 @@
 
 package com.fametal.view;
 
-import com.fametal.modelo.Apis.DaoMaestro;
+
+import com.fametal.dao.ServiciosGenerales;
 import com.fametal.modelo.Apis.artefactosAPI;
 import com.fametal.modelo.ClienteRuc;
 import java.awt.event.WindowEvent;
@@ -240,7 +241,7 @@ public class viewCrearClienteRUC extends javax.swing.JFrame {
             cliente.setTelefono1(txtTelefono1.getText());
             cliente.setTelefono2(txtTelefono2.getText());
             cliente.setCelular(txtCelular.getText());
-            DaoMaestro dao = new DaoMaestro();
+            ServiciosGenerales dao = new ServiciosGenerales(em);
 
             dao.GuardarEntidad(cliente,em);
 

@@ -29,12 +29,12 @@ public class Factura {
     private float valorVenta;
     private float subTotal;
     private float mtoImpVenta;
-    private ArrayList<Detalles> details = new ArrayList<>();
+    private ArrayList<DetallesDeProducto> details = new ArrayList<>();
             
     public Factura() {
         System.out.println(fecVencimiento);
-        /*Detalles e1 = new Detalles();
-        Detalles e2 = new Detalles();
+        /*DetallesDeProducto e1 = new DetallesDeProducto();
+        DetallesDeProducto e2 = new DetallesDeProducto();
         details.add(e1);
         details.add(e2);*/
     }

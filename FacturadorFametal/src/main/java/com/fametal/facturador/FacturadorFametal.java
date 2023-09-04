@@ -5,6 +5,7 @@ package com.fametal.facturador;
 
 import com.fametal.modelo.Apis.LocalDateTimeAdapter;
 import com.fametal.modelo.ClienteRuc;
+import com.fametal.modelo.ClienteFactura;
 import com.fametal.modelo.Factura;
 import com.fametal.view.viewLogin;
 import com.google.gson.Gson;
@@ -30,6 +31,8 @@ public class FacturadorFametal {
         log.setVisible(true);
         
         Factura fac = new Factura();
+        ClienteRuc clientRuc= new ClienteRuc("99115", "razonSocial", "direccion", "estado", "departamento", "provincia", "distrito", "ubigeo");
+        fac.recibirClienteRuc(clientRuc);
         
         Gson gg = new GsonBuilder().registerTypeAdapter(LocalDateTime.class, new LocalDateTimeAdapter()).setPrettyPrinting().create();
         String json = gg.toJson(fac);
